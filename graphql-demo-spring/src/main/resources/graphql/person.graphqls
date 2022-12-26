@@ -1,0 +1,39 @@
+type Car {
+    id: ID!
+    make: String!
+    model: String!
+    productYear: Int
+}
+
+type Country {
+    code: ID!
+    name: String!
+    continent: String
+}
+
+type Address {
+    id: ID!
+    street: String!
+    number: String
+    city: String!
+    country: Country
+}
+
+scalar Date
+
+type Person {
+    id: ID!
+    givenNames: String!
+    surname: String!
+    birthdate: Date,
+    addresses: [Address],
+    cars: [Car]
+}
+
+type Query {
+    findAllPersons: [Person]!
+}
+
+type Mutation {
+    createPerson(givenNames: String!, surname: String!, birthdate: String) : Person!
+}
